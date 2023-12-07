@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Người Dùng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+
+    <form id="userForm" action="/submit" method="post">
+
+        <h1>Thông Tin Người Dùng</h1>
+
+        <label for="terrain">1. Địa hình muốn đến:</label>
+        <select id="terrain" name="terrain">
+            <option value="Núi">Núi, đồi</option>
+            <option value="Biển">Biển, hồ, vịnh</option>
+            <option value="Thành phố">Thành phố, đồng bằng</option>
+        </select>
+
+        <label for="time">2. Thời gian:</label>
+        <select id="time" name="time">
+            <option value="Xuân">Tháng 3 – 5</option>
+            <option value="Hè">Tháng 6 – 8</option>
+            <option value="Thu">Tháng 9 - 11</option>
+            <option value="Đông">Tháng 12 - 2</option>
+        </select>
+
+        <label for="income">3. Thu nhập:</label>
+        <select id="income" name="income">
+            <option value="Dưới 5 triệu">Dưới 5 triệu</option>
+            <option value="5-15 triệu">5-15 triệu</option>
+            <option value="15-30 triệu">15-30 triệu</option>
+            <option value="Trên 30 triệu">Trên 30 triệu</option>
+        </select>
+
+        <label for="purpose">4. Mục đích du lịch:</label>
+        <select id="purpose" name="purpose">
+            <option value="Khám phá thiên nhiên">Khám phá thiên nhiên</option>
+            <option value="Tìm hiểu lịch sử">Tìm hiểu lịch sử</option>
+            <option value="Tìm hiểu văn hóa">Tìm hiểu văn hóa</option>
+            <option value="Tâm linh">Tâm linh</option>
+            <option value="Trải nghiệm">Trải nghiệm</option>
+            <option value="Nghỉ mát">Nghỉ mát</option>
+        </select>
+
+        <label for="numberOfPeople">5. Số người đi:</label>
+        <select id="numberOfPeople" name="numberOfPeople">
+            <option value="Một mình">Một mình</option>
+            <option value="Cặp đôi">Cặp đôi</option>
+            <option value="Nhóm 3-5">Nhóm 3-5</option>
+            <option value="Nhóm 6-10">Nhóm 6-10</option>
+            <option value="Hơn 10 người">Hơn 10 người</option>
+        </select>
+
+        <button type="submit">Xác nhận</button>
+
+        <h1>Kết quả gợi ý</h1>
+
+        <ul id="dataList"></ul>
+    </form>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
