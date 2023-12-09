@@ -78,4 +78,4 @@ Sau đó, mô hình đưa ra dự đoán về đánh giá người dùng về 20
 
 Chương trình sẽ lấy ra 3 địa điểm có đánh giá cao nhất để gợi ý cho người dùng
 
-![Alt text](image-2.png)
+![Alt text](image-3.png)
