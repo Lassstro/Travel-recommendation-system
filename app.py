@@ -37,7 +37,7 @@ def submit():
         new_data['Đánh giá'] = new_predictions[0]
         results = pd.concat([results, new_data], ignore_index=True)
     results = results.sort_values(by='Đánh giá', ascending=False)
-    return jsonify(results['Địa điểm'].head(3).to_list())
+    return jsonify(results.head(3).reset_index().to_dict())
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('userForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Ngăn chặn form gửi yêu cầu mặc định
-
+        event.preventDefault();
         // Lấy giá trị từ các trường của form
         var formData = {
             time: document.getElementById('time').value,
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
             purpose: document.getElementById('purpose').value,
             numberOfPeople: document.getElementById('numberOfPeople').value
         };
-
         // Gửi yêu cầu POST đến API Flask
         fetch('/submit', {
             method: 'POST',
@@ -31,19 +29,35 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function displayData(data) {
-    // Hiển thị dữ liệu trên giao diện HTML
     const dataList = document.getElementById('dataList');
-    dataList.innerHTML = '';  // Ẩn dữ liệu cũ
-    data.forEach(item => {
+    dataList.innerHTML = '';  // Xóa dữ liệu cũ
+    const diaDiem = data["Địa điểm"];
+    const danhGia = data["Đánh giá"];
+
+    Object.entries(diaDiem).forEach(([key, value]) => {
+        // Hiển thị thông tin trên giao diện
         const listItem = document.createElement('li');
+        listItem.style.display = 'flex'
+        listItem.style.alignItems = 'center';
+        // Tạo liên kết Google Tìm kiếm cho Địa điểm và thêm vào mục
+        const diaDiemLink = document.createElement('a');
+        diaDiemLink.href = `https://www.google.com/search?q=${encodeURIComponent(diaDiem[key])}`;
+        diaDiemLink.target = '_blank';
+        diaDiemLink.textContent = `${(parseInt(key) + 1)}:  ${diaDiem[key]}`
+        diaDiemLink.style.marginRight = '10px';
+        listItem.appendChild(diaDiemLink);
+    
+        const danhGiaElement = document.createElement('div');
 
-        // Tạo liên kết Google Tìm kiếm và thêm vào mục
-        const searchLink = document.createElement('a');
-        searchLink.href = `https://www.google.com/search?q=${encodeURIComponent(item)}`;
-        searchLink.target = '_blank';
-        searchLink.textContent = item;
+        for (let i = 1; i <= 5; i++) {
+            const star = document.createElement('a');
+            star.textContent = i <= danhGia[key] ? '☆' : '☆'; // Sử dụng ký tự hình sao
+            star.style.color = i <= danhGia[key] ? 'gold' : 'gray'; // Màu sắc cho sao được đánh giá
+            danhGiaElement.appendChild(star);
+        }
+        listItem.appendChild(danhGiaElement);
 
-        listItem.appendChild(searchLink);
         dataList.appendChild(listItem);
-    });
+    })
 }
+  

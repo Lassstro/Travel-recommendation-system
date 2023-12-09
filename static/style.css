@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    color: rgb(3, 3, 3); /* Đặt màu chữ để phù hợp với hình nền */
+    color: rgb(3, 3, 3); 
 }
 
 body::before {
@@ -14,12 +14,12 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('da-nang-background.jpg'); /* Thay 'danang.jpg' bằng đường dẫn thực đến hình ảnh Đà Nẵng */
+    background-image: url('da-nang-background.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3; /* Điều chỉnh mức độ mờ, giá trị từ 0 (hoàn toàn trong suốt) đến 1 (hoàn toàn không trong suốt) */
-    z-index: -1; /* Để đặt phía sau nội dung */
+    opacity: 0.3; 
+    z-index: -1; 
 }
 
 form {
@@ -59,6 +59,7 @@ a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    
 }
 
 button {
@@ -78,4 +79,8 @@ button:hover {
 
 button:active {
     background-color: #0f5c2a;
+}
+
+select {
+    font-size: large;
 }
